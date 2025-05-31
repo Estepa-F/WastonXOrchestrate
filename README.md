@@ -6,8 +6,8 @@ Git pour utiliser WatsonX Orchestrate Agentique
 
 - [Python 3.12+](https://www.python.org/)
 - [watsonx Agent Development Kit (ADK)](https://developer.watson-orchestrate.ibm.com)
-- Un compte IBM Cloud avec accès à watsonx Orchestrate
-- Un compte IBM Cloud avec accès à watsonx AI
+- [Un compte IBM Cloud avec accès à watsonx Orchestrate](https://cloud.ibm.com/)
+- [Un compte IBM Cloud avec accès à watsonx AI](https://cloud.ibm.com/)
 
 ---
 
@@ -90,33 +90,63 @@ Identifiant unique de l’espace de deployment Watsonx.AI.
 
 - Colle-le dans `WATSONX_SPACE_ID`
 
-## 🧠 Créer un Tool pour IBM watsonx Orchestrate
+### 📄 Étape 2 : lancer les lignes de commande pour l'installation
 
-Ce dépôt explique comment créer des **tools personnalisés** pour [IBM watsonx Orchestrate](https://developer.watson-orchestrate.ibm.com). Un *tool* est une fonction Python décorée qui permet à un agent d'exécuter une action automatisée, comme interagir avec une API externe ou transformer des données.
+#### 1) 🐍 Environnement virtuel : création
 
-### 🚀 Exemples de Tools
+```bash
+python3.12 -m venv venv
+source venv/bin/activate
+```
 
-#### 🔹 1. `list_github_files`: Lister les fichiers d’un dépôt GitHub
+---
 
-```python
-from ibm_watsonx_orchestrate.agent_builder.tools import tool, ToolPermission
-import requests
+#### 2) ⬆️ Installer/mettre à jour le package
 
-@tool(
-    name="list_github_files",
-    description="Liste tous les fichiers d'un dépôt GitHub via l'API GitHub.",
-    permission=ToolPermission.ADMIN
-)
-def list_github_files(owner: str, repo: str, branch: str = "main", token: str = "") -> list:
-    headers = {}
-    if token:
-        headers["Authorization"] = f"token {token}"
+Si tu veux installer ou mettre à jour `ibm-watsonx-orchestrate` depuis Test PyPI :
 
-    url = f"https://api.github.com/repos/{owner}/{repo}/git/trees/{branch}?recursive=1"
-    response = requests.get(url, headers=headers)
+```bash
+pip install --upgrade \
+  --index-url https://test.pypi.org/simple/ \
+  --extra-index-url https://pypi.org/simple \
+  ibm-watsonx-orchestrate
+```
 
-    if response.status_code != 200:
-        return [f"Erreur {response.status_code} : {response.text}"]
+---
 
-    tree = response.json().get("tree", [])
-    return [item["path"] for item in tree if item["type"] == "blob"]
+#### 3) 🚀 Commandes serveur
+
+```bash
+orchestrate server start --env-file .env
+orchestrate env activate local --registry testpypi
+```
+
+---
+
+#### 4) 📥 Import des tools et agents
+
+```bash
+# Tools utilisateurs
+orchestrate tools import -k python -f ./find_user_id.py -r ./requirements.txt  
+orchestrate tools import -k python -f ./find_user_management_chain.py -r ./requirements.txt  
+orchestrate tools import -k python -f ./find_user_peers.py -r ./requirements.txt  
+orchestrate tools import -k python -f ./find_user_manager.py -r ./requirements.txt  
+
+# Agent principal
+orchestrate agents import -f TI_Process_Closure_Agent.yaml
+
+# Tool de lecture/écriture
+orchestrate tools import -k python -f ./read_write_cube_PA.py -r ./requirements.txt  
+
+# Tool et agent GitHub
+orchestrate tools import -k python -f ./recupGitHubListFiles_Tool.py -r ./requirements.txt  
+orchestrate agents import -f AnalyseGitHubAgent.yaml
+```
+
+---
+
+#### 5) 💬 Démarrer le chat
+
+```bash
+orchestrate chat start
+```
