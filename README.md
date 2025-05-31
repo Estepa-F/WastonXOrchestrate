@@ -34,8 +34,11 @@ WATSONX_SPACE_ID="votre-ID-d'espace-Watsonx"
 
 Clé d’authentification pour télécharger les images nécessaires au runtime local.
 
-- Va sur : [https://cloud.ibm.com/iam/apikeys](https://cloud.ibm.com/iam/apikeys)
-- Clique sur **"Créer une clé d'API"**
+- Va sur : [https://github.ibm.com/WatsonOrchestrate/wxo-clients/issues/new/choose](https://github.ibm.com/WatsonOrchestrate/wxo-clients/issues/new/choose)
+- Clique sur **"Get started"**pour faire une demande. La clée sera envoyé par email après validation des équipes IBM.
+
+![Key Request](docs/img/KeyRequest.png)
+
 - Copie la clé et colle-la dans `DOCKER_IAM_KEY`
 
 ---
@@ -45,8 +48,10 @@ Clé d’authentification pour télécharger les images nécessaires au runtime 
 Clé donnant accès aux images privées d’IBM dans le container registry.
 
 - Va sur : [https://myibm.ibm.com/products-services/containerlibrary](https://myibm.ibm.com/products-services/containerlibrary)
-- Clique sur **"Get entitlement key"**
+- Si ta clé n'éxiste pas Clique sur **"Add new key"**
 - Copie la clé et colle-la dans `WO_ENTITLEMENT_KEY`
+
+![Entitlement Key](docs/img/EntitlementKey.png)
 
 ---
 
