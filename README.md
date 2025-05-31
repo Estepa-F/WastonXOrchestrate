@@ -63,11 +63,14 @@ Clé d’accès aux modèles d’IA et services dans Watsonx.ai.
 
 #### 🔹 `WATSONX_SPACE_ID`
 
-Identifiant unique de l’espace de projet dans Watsonx.
+Identifiant unique de l’espace de deployment Watsonx.AI.
 
-- Va sur : [https://dataplatform.cloud.ibm.com/](https://dataplatform.cloud.ibm.com/)
-- Accède à ton **espace de projet**
+- Va sur ton environnement WatsonX.AI et clique sur "View all deployment spaces"
+![View deployments](docs/img/ViewDeployments.png)
+- Clique sur "New deployment space"
+![New deployment](docs/img/newDeployment.png)
 - Dans **"Paramètres"**, copie l’**ID de l’espace**
+![New deployment](docs/img/newDeployment.png)
 - Colle-le dans `WATSONX_SPACE_ID`
 
 ## 🧠 Créer un Tool pour IBM watsonx Orchestrate
