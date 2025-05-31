@@ -54,9 +54,11 @@ Clé donnant accès aux images privées d’IBM dans le container registry.
 
 Clé d’accès aux modèles d’IA et services dans Watsonx.ai.
 
-- Va sur : [https://cloud.ibm.com](https://cloud.ibm.com)
-- Accède à ton instance **watsonx.ai**
-- Dans **"Service credentials"**, crée une **API key**
+- Va sur ta réservation techzone (Par exemple: [Techzone environnement](https://techzone.ibm.com/my/reservations/create/64e6866b41bf2a0017d986ad))
+- En bas de ta page récupère dans la partie **Reservation Details** la IBM Cloud API Key
+
+![APIKey](docs/img/IBMAPIKEY.png)
+
 - Colle-la dans `WATSONX_APIKEY`
 
 ---
@@ -66,11 +68,21 @@ Clé d’accès aux modèles d’IA et services dans Watsonx.ai.
 Identifiant unique de l’espace de deployment Watsonx.AI.
 
 - Va sur ton environnement WatsonX.AI et clique sur "View all deployment spaces"
+
 ![View deployments](docs/img/ViewDeployments.png)
-- Clique sur "New deployment space"
+
+- Clique sur **"New deployment space"**
+
 ![New deployment](docs/img/newDeployment.png)
-- Dans **"Paramètres"**, copie l’**ID de l’espace**
-![New deployment](docs/img/newDeployment.png)
+
+- Donne un nom et un description puis clique sur **Create**
+
+![Create deployment](docs/img/createDeployment.png)
+
+- Clique sur l'onglet **Manage** et récupère le **Space GUID**
+
+![Manage deployment](docs/img/manageDeployment.png)
+
 - Colle-le dans `WATSONX_SPACE_ID`
 
 ## 🧠 Créer un Tool pour IBM watsonx Orchestrate
