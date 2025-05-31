@@ -125,22 +125,15 @@ orchestrate env activate local --registry testpypi
 
 #### 4) 📥 Import des tools et agents
 
+- Se mettre dans le dossier ou sont situés vos tools et agents et effectuer les commandes suivantes: (Changer le nom de vos fichiers dans la ligne de commande)
+
 ```bash
 # Tools utilisateurs
 orchestrate tools import -k python -f ./find_user_id.py -r ./requirements.txt  
-orchestrate tools import -k python -f ./find_user_management_chain.py -r ./requirements.txt  
-orchestrate tools import -k python -f ./find_user_peers.py -r ./requirements.txt  
-orchestrate tools import -k python -f ./find_user_manager.py -r ./requirements.txt  
 
 # Agent principal
 orchestrate agents import -f TI_Process_Closure_Agent.yaml
 
-# Tool de lecture/écriture
-orchestrate tools import -k python -f ./read_write_cube_PA.py -r ./requirements.txt  
-
-# Tool et agent GitHub
-orchestrate tools import -k python -f ./recupGitHubListFiles_Tool.py -r ./requirements.txt  
-orchestrate agents import -f AnalyseGitHubAgent.yaml
 ```
 
 ---
