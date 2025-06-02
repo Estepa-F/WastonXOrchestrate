@@ -143,3 +143,11 @@ orchestrate agents import -f TI_Process_Closure_Agent.yaml
 ```bash
 orchestrate chat start
 ```
+
+---
+
+## Autres sources
+
+- [IBM WatsonX Orchestrate ADK](https://github.com/IBM/ibm-watsonx-orchestrate-adk)
+- [watson orchestrate](https://github.ibm.com/WatsonOrchestrate)
+- [remi-serra/watsonx-orchestrate](https://github.ibm.com/remi-serra/watsonx-orchestrate)
